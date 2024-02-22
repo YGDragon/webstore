@@ -1,0 +1,16 @@
+server:
+  port: 0
+
+spring:
+  application:
+    name: payment
+  profiles:
+    active: eclient
+
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+
+  config:
+    import: configserver:http://localhost:8888
