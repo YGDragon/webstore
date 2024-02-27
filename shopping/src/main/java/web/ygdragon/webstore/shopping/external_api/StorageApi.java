@@ -9,6 +9,9 @@ import web.ygdragon.webstore.shopping.models.Product;
 
 import java.util.List;
 
+/**
+ * External API with FeignService - StorageAPI
+ */
 @FeignClient(name = "storage")
 public interface StorageApi {
     /**
@@ -18,6 +21,15 @@ public interface StorageApi {
      */
     @GetMapping
     List<Product> getProducts();
+
+    /**
+     * Getting product from stock by ID
+     *
+     * @param id Product ID
+     * @return Product by ID
+     */
+    @GetMapping("/{id}")
+    Product getProduct(@PathVariable("id") Long id);
 
     /**
      * Reduce quantity of product from stock by product ID
@@ -44,5 +56,4 @@ public interface StorageApi {
      */
     @PostMapping("/{id}/reserve/rollback")
     void reservationProductRollback(@PathVariable Long id, @RequestBody Order order);
-
 }
