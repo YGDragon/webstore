@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import web.ygdragon.webstore.shopping.models.Transaction;
 
+/**
+ * External API with FeignService - BillingAPI
+ */
 @FeignClient(name = "payment")
 public interface BillingApi {
 
